@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Siplo</title>
+  </head>
+
+  <body>
+    <div id="container">
+      <div id="header">
+        <h1>SIPLO</h1>
+      </div>
+      <div id="search">
+        <h2>GOING OUT?</h2>
+        <div id="results" *ngFor="let place of places">
+        <button class="accordion">{{place.name}}</button>
+        <div class="panel">
+          <p>{{place.location.address1}}</p>
+          <p>{{place.location.city}}</p>
+        </div>
+        </div>
+
+        <h3>Got it wrong fam? Enter Your Location</h3>
+        <form id="location_input" (submit)='whenSubmit()'>
+          <input type='text name' name="location"
+          #location="ngModel"
+          [(ngModel)]='newPlace.location'>
+          <input type="submit" name="name" value="Search">
+        </form>
+        <button (click)='getLocation()' >Relocate</button>
+      </div>
+    </div>
+    <script type="text/javascript">
+    var acc = document.getElementsByClassName("accordion");
+      var i;
+
+      for (i = 0; i < acc.length; i++) {
+        acc[i].onclick = function(){
+        /* Toggle between adding and removing the "active" class,
+        to highlight the button that controls the panel */
+        this.classList.toggle("active");
+
+        /* Toggle between hiding and showing the active panel */
+        var panel = this.nextElementSibling;
+        if (panel.style.display === "block") {
+            panel.style.display = "none";
+        } else {
+            panel.style.display = "block";
+        }
+      }
+    }
+
+    </script>
+  </body>
+</html>
