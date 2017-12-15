@@ -15,6 +15,7 @@
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
     "mongoose": "^4.13.4",
+    "ngx-order-pipe": "^1.1.1",
     "yelp-fusion": "^1.0.4"
   }
 }

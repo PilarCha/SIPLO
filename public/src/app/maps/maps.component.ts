@@ -17,12 +17,7 @@ export class MapsComponent implements OnInit {
   constructor(private _apiService:ApiService) { }
 
   ngOnInit() {
-    this.getLocation()
-  }
-  getLocation(){
-    this.lat=34.17489,
-    this.lng=-118.30008;
-    this.zoom = 14;
+
   }
 
 }

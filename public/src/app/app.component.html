@@ -3,53 +3,78 @@
   <head>
     <meta charset="utf-8">
     <title>Siplo</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
-
   <body>
     <div id="container">
       <div id="header">
         <h1>SIPLO</h1>
       </div>
       <div id="search">
-        <h2>GOING OUT?</h2>
+        <h3 *ngIf="show===false">{{words}}</h3>
         <div id="results" *ngFor="let place of places">
-        <button class="accordion">{{place.name}}</button>
-        <div class="panel">
-          <p>{{place.location.address1}}</p>
-          <p>{{place.location.city}}</p>
+          <button class="accordion"
+          (click)="onClick({
+            location:this.place.location.display_address,
+            name:this.place.name
+          })">{{place.name}} <i class="material-icons" style="font-size:36px">directions</i></button>
+        </div><br>
+        <div class="place" *ngIf="show===false" >
+          <div class="counter"></div>
+          <div class="tap">
+            <div class="base">
+              <div class="pipes">
+                <span class="pipe1"></span>
+                <span class="pipe2"></span>
+                <span class="pipe-base"></span>
+                <div class="spicket">
+                  <div class="spout">
+                    <span class="top"></span>
+                    <span class="bottom"></span>
+                  </div>
+                  <span class="cover"></span>
+                  <span class="handle"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="beer-container">
+            <div class="beer">
+              <span class="stream"></span>
+              <span class="fill"></span>
+              <span class="splash"></span>
+              <span class="foam"></span>
+            </div>
+          </div>
+          <div class="beer-glass">
+            <span class="glass">
+              <span class="handle"></span>
+              <span class="main"></span>
+            </span>
+          </div>
         </div>
+        <h3 *ngIf="show===true" >We Got it wrong fam? Enter Your Location</h3>
+        <h2>{{error}}</h2>
+        <div class="wrap"  *ngIf="show===true" >
+          <div class="searchbar">
+            <form id="location_input" (submit)='whenSubmit()'>
+              <input type="text" class="searchTerm"
+              name="location"
+              #location="ngModel"
+              [(ngModel)]='newPlace.location'
+              placeholder="Location Here!">
+              <button type="submit" class="searchButton">
+                <i class="fa fa-search" aria-hidden="true"></i>
+              </button>
+            </form>
+          </div>
         </div>
-
-        <h3>Got it wrong fam? Enter Your Location</h3>
-        <form id="location_input" (submit)='whenSubmit()'>
-          <input type='text name' name="location"
-          #location="ngModel"
-          [(ngModel)]='newPlace.location'>
-          <input type="submit" name="name" value="Search">
-        </form>
-        <button (click)='getLocation()' >Relocate</button>
+        <div class="containertwo" *ngIf="show===true">
+          <button (click)='getLocation()' id="button">Relocate</button>
+        </div>
       </div>
     </div>
-    <script type="text/javascript">
-    var acc = document.getElementsByClassName("accordion");
-      var i;
-
-      for (i = 0; i < acc.length; i++) {
-        acc[i].onclick = function(){
-        /* Toggle between adding and removing the "active" class,
-        to highlight the button that controls the panel */
-        this.classList.toggle("active");
-
-        /* Toggle between hiding and showing the active panel */
-        var panel = this.nextElementSibling;
-        if (panel.style.display === "block") {
-            panel.style.display = "none";
-        } else {
-            panel.style.display = "block";
-        }
-      }
-    }
-
-    </script>
   </body>
 </html>
