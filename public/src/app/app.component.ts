@@ -33,7 +33,6 @@ export class AppComponent {
   getword(){
     var words=["Lips that touch liquor touch other lips quicker…","I drink to make other people more interesting.", "Everybody has to believe in something. I believe I’ll have another drink.", "You picked the wrong time to quit drinking", "It's always happy hour somewhere in the world"]
     this.words=words[Math.floor(Math.random()*(words.length))]
-    console.log(this.words)
   }
   onClick(object){
     var address=object.location[0]+object.location[1]+object.name
