@@ -9,6 +9,7 @@ import {ApiService} from './api.service'
 export class AppComponent {
   showBars:boolean=false;
   showSearch: boolean=false;
+  showError: boolean=false;
   error:string;
   words:string;
   newPlace:object;
@@ -26,7 +27,8 @@ export class AppComponent {
     },
     this.words=" ",
     this.showBars=false,
-    this.showSearch=false
+    this.showSearch=false,
+    this.showError=false
   }
   ngOnInit() {
     this.getword()
@@ -41,6 +43,7 @@ export class AppComponent {
     window.open(`https://maps.google.com/?q=+${address}`)
   }
   whenSubmit(){
+    this.words=''
     this.showBars=false
     this.showSearch=false
     this.error=''
@@ -48,24 +51,30 @@ export class AppComponent {
     .then((data)=>{
       if(data.response){
         if(data.response.statusCode){
+          this.showError=true
           this.error="Please enter a correct location"
           this.words=''
           this.showSearch=true
-          console.log(this.showSearch)
           return
         }
       }
       else{
         this.places=data
+        this.showError=false
         this.words=''
         this.error=""
       }
           this.showBars=true
+          this.words=''
           this.showSearch=true
+          this.showError=false
           this.places=data
     })
     .catch((errors)=>{
     })
+  }
+  scrollToTop (x,y) {
+    window.scrollTo(x, y);
   }
   getLocation(){
     navigator.geolocation.getCurrentPosition((position) => {

@@ -13,7 +13,7 @@
         <h1>SIPLO</h1>
       </div>
       <div id="search">
-        <h3 *ngIf="showBars===false">{{words}}</h3>
+        <h3 *ngIf="!showBars">{{words}}</h3>
         <div id="results" *ngFor="let place of places">
           <button *ngIf= "showBars===true" class="accordion"
           (click)="onClick({
@@ -21,7 +21,7 @@
             name:this.place.name
           })">{{place.name}} <i class="material-icons" style="font-size:36px">directions</i></button>
         </div><br>
-        <div class="place" *ngIf="showBars===false" >
+        <div class="place" *ngIf="!showBars" >
           <div class="counter"></div>
           <div class="tap">
             <div class="base">
@@ -55,11 +55,11 @@
             </span>
           </div>
         </div>
-        <h3 *ngIf="error.length===true" >We Got it wrong fam? Enter Your Location</h3>
-        <h2>{{error}}</h2>
-        <div class="wrap"  *ngIf="showSearch===true" >
+        <h3  *ngIf="showSearch && !showError">We Got it wrong fam? Enter Your Location</h3>
+        <h2 *ngIf="showError">{{error}}</h2>
+        <div class="wrap" *ngIf="showSearch" >
           <div class="searchbar">
-            <form id="location_input" (submit)='whenSubmit()'>
+            <form id="location_input" (submit)='whenSubmit()' (submit)="scrollToTop(0,0)">
               <input type="text" class="searchTerm"
               name="location"
               #location="ngModel"
@@ -71,7 +71,7 @@
             </form>
           </div>
         </div>
-        <div class="containertwo" *ngIf="showSearch===true">
+        <div class="containertwo" *ngIf="showSearch">
           <button (click)='getLocation()' id="button">Relocate</button>
         </div>
       </div>
