@@ -7,7 +7,7 @@ import {ApiService} from './api.service'
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  show:boolean=false
+  show:boolean=false;
   error:string;
   words:string;
   newPlace:object;
