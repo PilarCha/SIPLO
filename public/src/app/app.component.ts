@@ -77,6 +77,8 @@ export class AppComponent {
     window.scrollTo(x, y);
   }
   getLocation(){
+    this.showBars = false;
+    this.showSearch = false
     navigator.geolocation.getCurrentPosition((position) => {
       this.lat = position.coords.latitude;
       this.lng = position.coords.longitude;
@@ -92,6 +94,4 @@ export class AppComponent {
       })
     })
   }
-
-
 }

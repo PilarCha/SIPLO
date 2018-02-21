@@ -72,7 +72,7 @@
           </div>
         </div>
         <div class="containertwo" *ngIf="showSearch">
-          <button (click)='getLocation()' id="button">Relocate</button>
+          <button (click)='getLocation()' (click) = "scrollToTop(0,0)" id="button">Relocate</button>
         </div>
       </div>
     </div>
