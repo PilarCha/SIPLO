@@ -8,7 +8,18 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   animations: [
+    trigger('myAwesomeAnimation', [
 
+      state('small', style({
+        transform: 'scale(1)',
+      })),
+
+      state('large', style({
+        transform: 'scale(1.2)',
+      })),
+
+      transition('small => large', animate('300ms easi-in')),
+    ]),
   ]
 })
 export class AppComponent {
