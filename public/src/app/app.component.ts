@@ -1,10 +1,15 @@
 import { Component } from '@angular/core';
 import {Router} from '@angular/router';
 import {ApiService} from './api.service'
+import { trigger, state, style, animate, transition } from '@angular/animations'
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  animations: [
+
+  ]
 })
 export class AppComponent {
   showBars:boolean=false;
@@ -52,8 +57,8 @@ export class AppComponent {
       if(data.response){
         if(data.response.statusCode){
           this.showError=true
-          this.error="Please enter a correct location"
           this.words=''
+          this.error="Please enter a correct location"
           this.showSearch=true
           return
         }
