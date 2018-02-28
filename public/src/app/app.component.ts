@@ -32,10 +32,6 @@ export class AppComponent {
   places:any[];
   lat:number;
   lng:number;
-  zoom: number;
-  map:string;
-  radius:number = 2000;
-  color:string = 'rgb(116, 156, 189)';
 
   constructor(private _router:Router, private _apiService:ApiService){
     this.newPlace={
@@ -98,7 +94,6 @@ export class AppComponent {
     navigator.geolocation.getCurrentPosition((position) => {
       this.lat = position.coords.latitude;
       this.lng = position.coords.longitude;
-      this.zoom = 14;
       this._apiService.searchGeoLocation({lat:this.lat,long:this.lng})
       .then((data)=>{
         this.showBars=true
