@@ -6,14 +6,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MapsComponent } from './maps/maps.component';
 import { ApiService } from './api.service'
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    MapsComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
