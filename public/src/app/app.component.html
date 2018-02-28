@@ -14,7 +14,10 @@
       </div>
       <div id="search">
         <h3 *ngIf="!showBars">{{words}}</h3>
-        <div id="results" *ngFor="let place of places">
+        <div id="results" *ngFor="let place of places"
+        [@myAwesomeAnimation]='state'
+        (mouseover)="mouseOverAnimation()"
+        >
           <button *ngIf= "showBars===true" class="accordion"
           (click)="onClick({
             location:this.place.location.display_address,
