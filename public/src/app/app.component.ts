@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
 import {Router} from '@angular/router';
 import {ApiService} from './api.service'
-import { trigger, state, style, animate, transition } from '@angular/animations'
+import { trigger, state, style, animate, transition, stagger, query } from '@angular/animations'
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   animations: [
-    trigger('myAwesomeAnimation', [
+    trigger('* => *', [
 
       state('small', style({
         transform: 'scale(1)',
